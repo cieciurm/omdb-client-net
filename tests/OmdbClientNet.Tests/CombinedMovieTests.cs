@@ -34,7 +34,7 @@ namespace OmdbClientNet.Tests
             var searchResults = await _client.SearchMovies(searchRequest, _deserializeSearchResponse);
             var searchResult = searchResults.Search.ToList()[0];
 
-            var detailsRequest = new MovieDetailsRequest(_omdbSettings.ApiKey, searchResult.ImdbId);
+            var detailsRequest = new MovieDetailsRequest(_omdbSettings.ApiKey, new ImdbId(searchResult.ImdbId));
 
             var detailsResult = await _client.GetMovieDetails(detailsRequest, _deserializeDetailsResponse);
 

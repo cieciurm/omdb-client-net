@@ -25,10 +25,23 @@ namespace OmdbClientNet.Tests
         public async Task GetMovieDetails_WhenCorrectImdbId_ShouldReturnMovie()
         {
             // Arrange
-            var request = new MovieDetailsRequest(_omdbSettings.ApiKey, "tt0096895")
+            var request = new MovieDetailsRequest(_omdbSettings.ApiKey, new ImdbId("tt0096895"))
             {
                 PlotType = PlotType.Full,
             };
+
+            // Act
+            var response = await _client.GetMovieDetails(request, _deserializeResponse);
+
+            // Assert
+            response.ShouldBeSuccessful();
+        }
+
+        [Fact]
+        public async Task GetMovieDetails_WhenCorrectTitle_ShouldReturnMovie()
+        {
+            // Arrange
+            var request = new MovieDetailsRequest(_omdbSettings.ApiKey, new MovieTittle("Batman"));
 
             // Act
             var response = await _client.GetMovieDetails(request, _deserializeResponse);

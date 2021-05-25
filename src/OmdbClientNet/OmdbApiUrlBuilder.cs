@@ -25,6 +25,7 @@ namespace OmdbClientNet
 
         public OmdbApiUrlBuilder WithDetailsRequest(MovieDetailsRequest movieDetailsRequest)
             => WithImdbId(movieDetailsRequest.ImdbId)
+                .WithMovieTitle(movieDetailsRequest.Title)
                 .WithResultType(movieDetailsRequest.Type)
                 .WithPlotType(movieDetailsRequest.PlotType)
                 .WithYear(movieDetailsRequest.Year);
@@ -40,7 +41,20 @@ namespace OmdbClientNet
 
         private OmdbApiUrlBuilder WithImdbId(string imdbId)
         {
-            _sb.Append($"&i={imdbId}");
+            if (!string.IsNullOrWhiteSpace(imdbId))
+            {
+                _sb.Append($"&i={imdbId}");
+            }
+
+            return this;
+        }
+
+        private OmdbApiUrlBuilder WithMovieTitle(string movieTitle)
+        {
+            if (!string.IsNullOrWhiteSpace(movieTitle))
+            {
+                _sb.Append($"&t={movieTitle}");
+            }
 
             return this;
         }
