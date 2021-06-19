@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>0.0.1</Version>
+    <Authors>Mateusz Cieciura</Authors>
+    <Description>.NET Standard wrapper for OMDB API (http://www.omdbapi.com/)</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/cieciurm/omdb-client-net</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/cieciurm/omdb-client-net</RepositoryUrl>
+    <PackageTags>omdb api net standard</PackageTags>
+    <PackageId>OmdbClientNet</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
