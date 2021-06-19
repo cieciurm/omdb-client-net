@@ -2,10 +2,10 @@ using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using FluentAssertions;
 using OmdbClientNet.Base;
 using OmdbClientNet.Search;
 using OmdbClientNet.Tests.Common;
+using Shouldly;
 using Xunit;
 
 namespace OmdbClientNet.Tests
@@ -56,9 +56,9 @@ namespace OmdbClientNet.Tests
             // Assert
             searchResponse.ShouldBeSuccessful();
 
-            searchResponse.Response.Should().BeTrue(); 
-            searchResponse.TotalResults.Should().Be(3);
-            searchResponse.Search.Select(x => x.Year).Should().OnlyContain(x => x.Equals(year.ToString()));
+            searchResponse.Response.ShouldBeTrue(); 
+            searchResponse.TotalResults.ShouldBe(3);
+            searchResponse.Search.Select(x => x.Year).ShouldContain(x => x.Equals(year.ToString()));
         }
     }
 }

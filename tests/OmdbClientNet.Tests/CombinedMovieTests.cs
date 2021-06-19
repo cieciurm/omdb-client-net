@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using FluentAssertions;
 using OmdbClientNet.Details;
 using OmdbClientNet.Search;
 using OmdbClientNet.Tests.Common;
+using Shouldly;
 using Xunit;
 
 namespace OmdbClientNet.Tests
@@ -39,9 +39,9 @@ namespace OmdbClientNet.Tests
             var detailsResult = await _client.GetMovieDetails(detailsRequest, _deserializeDetailsResponse);
 
             // Assert
-            detailsResult.ImdbId.Should().BeEquivalentTo(searchResult.ImdbId);
-            detailsResult.Title.Should().BeEquivalentTo(searchResult.Title);
-            detailsResult.Year.Should().BeEquivalentTo(searchResult.Year);
+            detailsResult.ImdbId.ShouldBe(searchResult.ImdbId);
+            detailsResult.Title.ShouldBe(searchResult.Title);
+            detailsResult.Year.ShouldBe(searchResult.Year);
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using FluentAssertions;
-using OmdbClientNet.Base;
+﻿using OmdbClientNet.Base;
+using Shouldly;
 
 namespace OmdbClientNet.Tests.Common
 {
@@ -7,8 +7,8 @@ namespace OmdbClientNet.Tests.Common
     {
         public static void ShouldBeSuccessful(this BaseResponse response)
         {
-            response.Should().NotBeNull();
-            response.Response.Should().BeTrue();
+            response.ShouldNotBeNull();
+            response.Response.ShouldBeTrue();
         }
     }
 }
