@@ -8,7 +8,7 @@ namespace OmdbClientNet.Tests.Common
         public static void ShouldBeSuccessful(this BaseResponse response)
         {
             response.ShouldNotBeNull();
-            response.Response.ShouldBeTrue();
+            response.ResponseBool.ShouldBeTrue();
         }
     }
 }

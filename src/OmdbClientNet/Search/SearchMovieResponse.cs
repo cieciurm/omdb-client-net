@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Text.Json.Serialization;
 using OmdbClientNet.Base;
 
 namespace OmdbClientNet.Search
@@ -16,6 +17,7 @@ namespace OmdbClientNet.Search
 
         public string Year { get; set; }
 
+        [JsonPropertyName("imdbID")]
         public string ImdbId { get; set; }
 
         public string Type { get; set; }

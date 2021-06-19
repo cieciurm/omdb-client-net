@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -14,13 +13,11 @@ namespace OmdbClientNet.Tests
     {
         private readonly OmdbSettings _omdbSettings;
         private readonly HttpMessageInvoker _client;
-        private readonly Func<string, SearchMovieResponse> _deserializeResponse;
 
         public SearchMoviesTests(OmdbClassFixture omdbClassFixture)
         {
             _omdbSettings = omdbClassFixture.OmdbSettings;
             _client = omdbClassFixture.Client;
-            _deserializeResponse = omdbClassFixture.DeserializeObject<SearchMovieResponse>;
         }
 
         [Fact]
@@ -33,7 +30,7 @@ namespace OmdbClientNet.Tests
             };
 
             // Act
-            var searchResponse = await _client.SearchMovies(request, _deserializeResponse);
+            var searchResponse = await _client.SearchMovies(request);
 
             // Assert
             searchResponse.ShouldBeSuccessful();
@@ -51,14 +48,13 @@ namespace OmdbClientNet.Tests
             };
 
             // Act
-            var searchResponse = await _client.SearchMovies(request, _deserializeResponse);
+            var searchResponse = await _client.SearchMovies(request);
 
             // Assert
             searchResponse.ShouldBeSuccessful();
 
-            searchResponse.Response.ShouldBeTrue(); 
-            searchResponse.TotalResults.ShouldBe(3);
-            searchResponse.Search.Select(x => x.Year).ShouldContain(x => x.Equals(year.ToString()));
+            searchResponse.TotalResultsInt.ShouldBe(3);
+            searchResponse.Search.Select(x => x.Year).Distinct().ShouldContain(x => x.Equals(year.ToString()));
         }
     }
 }

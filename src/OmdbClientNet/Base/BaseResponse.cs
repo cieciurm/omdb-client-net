@@ -1,9 +1,17 @@
-﻿namespace OmdbClientNet.Base
+﻿using System;
+using System.Text.Json.Serialization;
+
+namespace OmdbClientNet.Base
 {
     public abstract class BaseResponse
     {
-        public bool Response { get; set; }
+        public string Response { get; set; }
 
-        public int TotalResults { get; set; }
+        public bool ResponseBool => Convert.ToBoolean(Response);
+
+        [JsonPropertyName("totalResults")]
+        public string TotalResults { get; set; }
+
+        public int TotalResultsInt => Convert.ToInt32(TotalResults);
     }
 }

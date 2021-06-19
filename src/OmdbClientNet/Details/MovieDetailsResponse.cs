@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using OmdbClientNet.Base;
 
 namespace OmdbClientNet.Details
@@ -33,6 +34,7 @@ namespace OmdbClientNet.Details
 
         public string Poster { get; set; }
 
+        [JsonPropertyName("imdbID")]
         public string ImdbId { get; set; }
 
         public string ImdbRating { get; set; }

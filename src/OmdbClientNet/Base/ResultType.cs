@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace OmdbClientNet.Base
+﻿namespace OmdbClientNet.Base
 {
     public enum ResultType
     {

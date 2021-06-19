@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 using OmdbClientNet.Base;
 using OmdbClientNet.Details;
@@ -12,13 +11,11 @@ namespace OmdbClientNet.Tests
     {
         private readonly HttpMessageInvoker _client;
         private readonly OmdbSettings _omdbSettings;
-        private readonly Func<string, MovieDetailsResponse> _deserializeResponse;
 
         public MovieDetailsTests(OmdbClassFixture omdbClassFixture)
         {
             _client = omdbClassFixture.Client;
             _omdbSettings = omdbClassFixture.OmdbSettings;
-            _deserializeResponse = omdbClassFixture.DeserializeObject<MovieDetailsResponse>;
         }
 
         [Fact]
@@ -31,7 +28,7 @@ namespace OmdbClientNet.Tests
             };
 
             // Act
-            var response = await _client.GetMovieDetails(request, _deserializeResponse);
+            var response = await _client.GetMovieDetails(request);
 
             // Assert
             response.ShouldBeSuccessful();
@@ -44,7 +41,7 @@ namespace OmdbClientNet.Tests
             var request = new MovieDetailsRequest(_omdbSettings.ApiKey, new MovieTittle("Batman"));
 
             // Act
-            var response = await _client.GetMovieDetails(request, _deserializeResponse);
+            var response = await _client.GetMovieDetails(request);
 
             // Assert
             response.ShouldBeSuccessful();

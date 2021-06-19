@@ -1,6 +1,5 @@
 using System.Net.Http;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json;
 
 namespace OmdbClientNet.Tests.Common
 {
@@ -9,8 +8,6 @@ namespace OmdbClientNet.Tests.Common
         public OmdbSettings OmdbSettings { get; } = new OmdbSettings();
 
         public HttpMessageInvoker Client { get; } = new HttpClient();
-
-        public T DeserializeObject<T>(string content) => JsonConvert.DeserializeObject<T>(content);
 
         public OmdbClassFixture()
         {
