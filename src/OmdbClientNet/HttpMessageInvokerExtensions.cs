@@ -36,6 +36,11 @@ namespace OmdbClientNet
 
         private static async Task<T> Deserialize<T>(HttpResponseMessage response)
         {
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException($"OMDB API returned {response.StatusCode.ToString()}");
+            }
+
             var stringResponse = await response.Content.ReadAsStringAsync();
 
             return JsonSerializer.Deserialize<T>(stringResponse);
