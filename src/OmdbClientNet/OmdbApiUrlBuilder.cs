@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using OmdbClientNet.Base;
 using OmdbClientNet.Details;
+using OmdbClientNet.Exceptions;
 using OmdbClientNet.Search;
 
 namespace OmdbClientNet
@@ -11,9 +12,14 @@ namespace OmdbClientNet
 
         private readonly StringBuilder _sb = new StringBuilder();
 
-        public OmdbApiUrlBuilder(string apiKey, string baseAddress = null)
+        public OmdbApiUrlBuilder(string apiKey)
         {
-            _sb.Append(baseAddress ?? Url);
+            if (string.IsNullOrWhiteSpace(apiKey))
+            {
+                throw new MissingOmdbApiKeyException();
+            }
+
+            _sb.Append(Url);
             _sb.Append($"?apikey={apiKey}");
         }
 
