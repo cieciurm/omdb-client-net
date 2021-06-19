@@ -2,11 +2,11 @@
 
 namespace OmdbClientNet.Details
 {
-    public readonly struct MovieTittle
+    public readonly struct MovieTitle
     {
         public string Value { get; }
 
-        public MovieTittle(string movieTitle)
+        public MovieTitle(string movieTitle)
         {
             if (string.IsNullOrWhiteSpace(movieTitle))
             {

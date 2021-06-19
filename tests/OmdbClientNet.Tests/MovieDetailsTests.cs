@@ -38,7 +38,7 @@ namespace OmdbClientNet.Tests
         public async Task GetMovieDetails_WhenCorrectTitle_ShouldReturnMovie()
         {
             // Arrange
-            var request = new MovieDetailsRequest(_omdbSettings.ApiKey, new MovieTittle("Batman"));
+            var request = new MovieDetailsRequest(_omdbSettings.ApiKey, new MovieTitle("Batman"));
 
             // Act
             var response = await _client.GetMovieDetails(request);

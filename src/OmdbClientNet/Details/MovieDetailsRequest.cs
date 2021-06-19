@@ -34,7 +34,7 @@ namespace OmdbClientNet.Details
         /// </summary>
         /// <param name="movieTitle">Movie title to search for.</param>
         /// <param name="apiKey">API Key</param>
-        public MovieDetailsRequest(string apiKey, MovieTittle movieTitle) : base(apiKey)
+        public MovieDetailsRequest(string apiKey, MovieTitle movieTitle) : base(apiKey)
         {
             Title = movieTitle.Value;
         }
