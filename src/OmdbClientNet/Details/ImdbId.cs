@@ -1,19 +1,9 @@
-﻿using System;
+﻿using OmdbClientNet.Base;
 
 namespace OmdbClientNet.Details
 {
-    public class ImdbId
+    public class ImdbId : StronglyTypedId
     {
-        public string Value { get; }
-
-        public ImdbId(string imdbId)
-        {
-            if (string.IsNullOrWhiteSpace(imdbId))
-            {
-                throw new ArgumentNullException(nameof(imdbId));
-            }
-
-            Value = imdbId;
-        }
+        public ImdbId(string value) : base(value) { }
     }
 }
