@@ -23,7 +23,7 @@ namespace OmdbClientNet.Tests
         public void GetMovieDetails_WhenApiKeyMissing_ThenThrowsException(string apiKey)
         {
             // Arrange
-            var request = new MovieDetailsRequest(apiKey, new ImdbId());
+            var request = new MovieDetailsRequest(apiKey, new ImdbId(Guid.NewGuid().ToString()));
 
             // Act
             Action action = () => _httpClient.GetMovieDetails(request);

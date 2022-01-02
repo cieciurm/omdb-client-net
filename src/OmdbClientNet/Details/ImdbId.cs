@@ -2,7 +2,7 @@
 
 namespace OmdbClientNet.Details
 {
-    public readonly struct ImdbId
+    public class ImdbId
     {
         public string Value { get; }
 
